@@ -1,11 +1,5 @@
-# flutter_module
+# uniapp-flutter-module
 
-A new flutter module project.
+Flutter module 代码 for uni-app
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.dev/).
-
-For instructions integrating Flutter modules to your existing applications,
-see the [add-to-app documentation](https://flutter.dev/docs/development/add-to-app).
+(https://github.com/snice/uniapp-flutter)[uniapp-flutter] 的Flutter项目源码
