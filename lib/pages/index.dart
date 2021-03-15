@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/global.dart';
 import '../uniapp/app_bar.dart';
+import '../common/global.dart';
 import '../common/root_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -19,18 +19,17 @@ class _MyHomePageState extends RootPageState<MyHomePage> {
     setState(() {
       _counter++;
     });
-    var value = await globalChannel
-        .callUniMethodWithCallback('test', {'test': _counter});
+    var value = await uniapp.$emitSync('test', {'test': _counter});
     print(value);
   }
 
   @override
   void initState() {
     super.initState();
-    globalChannel.$on('test', (Map<String, dynamic> map) {
+    uniapp.$on('test', (Map<String, dynamic> map) {
       print('test:' + map.toString());
       if (map.containsKey("callbackId")) {
-        globalChannel.callUniCallback(map['callbackId'], {'a': 6});
+        uniapp.callback(map['callbackId'], {'a': 6});
       }
     });
   }
@@ -38,7 +37,7 @@ class _MyHomePageState extends RootPageState<MyHomePage> {
   @override
   void dispose() {
     super.dispose();
-    globalChannel.$off('test');
+    uniapp.$off('test');
   }
 
   @override

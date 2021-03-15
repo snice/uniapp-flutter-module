@@ -18,7 +18,7 @@ abstract class RootPageState<T extends StatefulWidget> extends State<T>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    globalChannel.initChannel();
+    uniapp.initChannel();
   }
 
   @override
@@ -33,12 +33,12 @@ abstract class RootPageState<T extends StatefulWidget> extends State<T>
 
   @override
   Widget build(BuildContext context) {
-    globalChannel.setContext(context);
+    uniapp.setContext(context);
     return render(context);
   }
 
   getParams() async {
-    var map = await globalChannel.fireEvent("getParams");
+    var map = await uniapp.fireEvent("getParams");
     initParams(new Map<String, dynamic>.from(map));
   }
 }

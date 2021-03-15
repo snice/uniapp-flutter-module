@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 
-class GlobalChannel {
+class UniappMethodChannel {
   MethodChannel _channel;
   BuildContext _context;
   Map<String, Function(Map<String, dynamic> map)> _methodHandlers = new Map();
@@ -76,44 +76,31 @@ class GlobalChannel {
     }
   }
 
+  ///
+  /// 监听uniapp事件
+  ///
   void $on(String method, Function(Map<String, dynamic> map) handler) {
     _methodHandlers[method] = handler;
   }
 
+  ///
+  /// 取消uniapp事件监听
+  ///
   void $off(String method) {
     _methodHandlers.remove(method);
   }
 
   ///
-  /// 调用uniapp回调
+  /// 给uniapp发送事件
   ///
-  void callUniCallback(String callbackId, [dynamic arguments]) {
-    var params = new Map<String, dynamic>.from(arguments);
-    params["callbackId"] = callbackId;
-    fireEvent('_uni_callback', params);
-  }
-
-  ///
-  /// 调用uniapp回调（持久回调）
-  ///
-  void callKeepAliveUniCallback(String callbackId, [dynamic arguments]) {
-    var params = new Map<String, dynamic>.from(arguments);
-    params["callbackId"] = callbackId;
-    params["keepAlive"] = true;
-    fireEvent('_uni_callback', params);
-  }
-
-  ///
-  /// 调用uniapp方法
-  ///
-  void callUniMethod(String eventName, [dynamic arguments]) {
+  void $emit(String eventName, [dynamic arguments]) {
     fireEvent(eventName, arguments);
   }
 
   ///
-  /// 调用uniapp方法（带回调）
+  /// 给uniapp发送事件（同步）
   ///
-  Future callUniMethodWithCallback(String eventName, [dynamic arguments]) {
+  Future $emitSync(String eventName, [dynamic arguments]) {
     String alphabet = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
     int strlenght = 25;
 
@@ -125,6 +112,25 @@ class GlobalChannel {
     var params = new Map<String, dynamic>.from(arguments);
     params["callbackId"] = eventName + "&" + left;
     return fireEvent(eventName, params);
+  }
+
+  ///
+  /// 调用uniapp回调
+  ///
+  void callback(String callbackId, [dynamic arguments]) {
+    var params = new Map<String, dynamic>.from(arguments);
+    params["callbackId"] = callbackId;
+    fireEvent('_uni_callback', params);
+  }
+
+  ///
+  /// 调用uniapp回调（持久回调）
+  ///
+  void callbackKeepAlive(String callbackId, [dynamic arguments]) {
+    var params = new Map<String, dynamic>.from(arguments);
+    params["callbackId"] = callbackId;
+    params["keepAlive"] = true;
+    fireEvent('_uni_callback', params);
   }
 
   Future fireEvent(String eventName, [dynamic arguments]) {

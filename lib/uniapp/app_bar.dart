@@ -15,7 +15,7 @@ class UniAppBar extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: globalChannel.statusBarHeight,
+            height: uniapp.statusBarHeight,
           ),
           Container(
             height: 46,
@@ -33,7 +33,7 @@ class UniAppBar extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    globalChannel.pop();
+                    uniapp.pop();
                   },
                 ),
               ],
