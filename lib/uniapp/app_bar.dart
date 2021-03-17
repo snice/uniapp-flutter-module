@@ -7,35 +7,35 @@ class UniAppBar extends StatelessWidget {
   //   key,
   // }) : super(key: key);
 
+  var backBtn = GestureDetector(
+    child: Container(
+      width: 44,
+      height: 44,
+      child: Icon(
+        IconData(0xe601, fontFamily: 'streamiconfont'),
+        size: 27,
+        color: Colors.white,
+      ),
+    ),
+    onTap: () {
+      uniapp.pop();
+    },
+  );
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.green,
-      // height: globalChannel.statusBarHeight + 46,
       child: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: uniapp.statusBarHeight,
           ),
           Container(
             height: 46,
             child: Row(
               children: <Widget>[
-                GestureDetector(
-                  child: Container(
-                    color: Colors.red,
-                    width: 50,
-                    height: 40,
-                    child: Icon(
-                      CupertinoIcons.back,
-                      size: 25,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onTap: () {
-                    uniapp.pop();
-                  },
-                ),
+                backBtn,
               ],
             ),
           )
