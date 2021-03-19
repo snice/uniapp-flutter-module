@@ -49,34 +49,38 @@ class _MyHomePageState extends RootPageState<MyHomePage> {
 
   @override
   Widget render(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          UniAppBar(),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                TextButton(
-                  onPressed: _incrementCounter,
-                  child: Text('Add'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/second",
-                        arguments: {'id': 1});
-                  },
-                  child: Text('Next'),
-                ),
-              ],
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            UniAppBar(
+              title: "Flutter Page1",
             ),
-          ),
-        ],
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                  TextButton(
+                    onPressed: _incrementCounter,
+                    child: Text('Add'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/second",
+                          arguments: {'id': 1});
+                    },
+                    child: Text('Next'),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

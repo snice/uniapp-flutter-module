@@ -1,19 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/global.dart';
 import '../uniapp/app_bar.dart';
 
 class SecondRoute extends StatefulWidget {
   final Map<String, dynamic> params;
   SecondRoute({this.params});
   @override
-  SecondRouteState createState() => SecondRouteState(params: params);
+  SecondRouteState createState() => SecondRouteState();
 }
 
 class SecondRouteState extends State<SecondRoute> {
-  final Map<String, dynamic> params;
   int _counter = 0;
-  SecondRouteState({this.params});
-
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -26,9 +24,11 @@ class SecondRouteState extends State<SecondRoute> {
       body: Center(
           child: Column(
         children: [
-          UniAppBar(),
+          UniAppBar(
+            title: "Flutter Page2",
+          ),
           Text(
-            'id:$params,$_counter',
+            '参数:${widget.params}\n$_counter',
             style: Theme.of(context).textTheme.headline4,
           ),
           TextButton(
