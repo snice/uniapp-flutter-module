@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UniappMethodChannel {
-  MethodChannel _channel;
-  BuildContext _context;
+  late MethodChannel _channel;
+  late BuildContext _context;
   Map<String, Function(Map<String, dynamic> map)> _methodHandlers = new Map();
   bool isInit = false;
   double _sh = 0;
@@ -31,10 +31,10 @@ class UniappMethodChannel {
       } else {
         if (_methodHandlers.containsKey(call.method)) {
           if (call.arguments != null) {
-            Function.apply(_methodHandlers[call.method],
+            Function.apply(_methodHandlers[call.method] as Function,
                 [new Map<String, dynamic>.from(call.arguments)]);
           } else {
-            Function.apply(_methodHandlers[call.method], []);
+            Function.apply(_methodHandlers[call.method] as Function, []);
           }
         } else {
           throw Exception('not implemented ${call.method}');

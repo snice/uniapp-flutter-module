@@ -3,13 +3,13 @@ import '../common/global.dart';
 import 'app_icon.dart';
 
 class UniAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final Color styleColor;
+  final Color? styleColor;
   final String title;
-  final double contentHeight;
+  final double? contentHeight;
 
   double get toolbarHeight => contentHeight ?? 46;
 
-  UniAppBar({@required this.title, this.styleColor, this.contentHeight})
+  UniAppBar({required this.title, this.styleColor, this.contentHeight})
       : super();
 
   @override
@@ -40,6 +40,11 @@ class _AppBarState extends State<UniAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    var _title = new Container(
+      child: new Text(widget.title,
+          style: new TextStyle(
+              fontSize: 18, color: widget.styleColor ?? Colors.white)),
+    );
     return Container(
         color: Colors.green,
         child: Column(
@@ -59,12 +64,7 @@ class _AppBarState extends State<UniAppBar> {
                         child: backBtn,
                       ),
                     ),
-                    new Container(
-                      child: new Text(widget.title,
-                          style: new TextStyle(
-                              fontSize: 18,
-                              color: widget.styleColor ?? Colors.white)),
-                    ),
+                    _title,
                   ],
                 ))
           ],

@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   final PageRouteFactory _pageRouteBuilder =
       <T>(RouteSettings settings, WidgetBuilder builder) {
-    final Function pageContentBuilder = pages[settings.name];
+    final Function pageContentBuilder = pages[settings.name] as Function;
     if (settings.arguments != null) {
       return CupertinoPageRoute(
           settings: settings,
@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(750, 1334),
-      allowFontScaling: false,
       builder: () => WidgetsApp(
         color: this.color,
         routes: pages,

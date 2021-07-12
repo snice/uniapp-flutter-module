@@ -1,11 +1,13 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/global.dart';
+// import 'package:flutter_module/common/global.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import '../uniapp/app_bar.dart';
 
 class SecondRoute extends StatefulWidget {
   final Map<String, dynamic> params;
-  SecondRoute({this.params});
+  SecondRoute({required this.params});
   @override
   SecondRouteState createState() => SecondRouteState();
 }
@@ -39,8 +41,15 @@ class SecondRouteState extends State<SecondRoute> {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Go back!'),
-          )
+            child: Text('Go backdd!'),
+          ),
+          Expanded(
+            child: InAppWebView(
+              key: GlobalKey(),
+              initialUrlRequest:
+                  URLRequest(url: Uri.parse('https://m.baidu.com')),
+            ),
+          ),
         ],
       )),
     );

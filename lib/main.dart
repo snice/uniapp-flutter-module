@@ -6,10 +6,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'app.dart';
 
-void main() => runApp(MyApp(Colors.blue));
+void main() {
+  // it should be the first line in main method
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp(Colors.blue));
+}
 
 @pragma('vm:entry-point')
-void topMain() => runApp(MyApp(Colors.green));
+void topMain() {
+  // it should be the first line in main method
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp(Colors.green));
+}
 
 @pragma('vm:entry-point')
-void bottomMain() => runApp(MyApp(Colors.purple));
+void bottomMain() {
+  // it should be the first line in main method
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp(Colors.purple));
+}

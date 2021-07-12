@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// import 'package:kraken/kraken.dart';
 import '../uniapp/app_bar.dart';
 import '../common/global.dart';
 import '../common/root_page.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -49,6 +50,16 @@ class _MyHomePageState extends RootPageState<MyHomePage> {
 
   @override
   Widget render(BuildContext context) {
+    // Kraken kraken = Kraken(
+    //     bundleURL:
+    //         'https://shtianqi.oss-cn-shanghai.aliyuncs.com/kraken/bundle.js');
+    // return MaterialApp(
+    //     title: 'Flutter Demo',
+    //     theme: ThemeData(
+    //       primarySwatch: Colors.blue,
+    //       visualDensity: VisualDensity.adaptivePlatformDensity,
+    //     ),
+    //     home: kraken);
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -76,6 +87,9 @@ class _MyHomePageState extends RootPageState<MyHomePage> {
                     },
                     child: Text('Next'),
                   ),
+                  // Expanded(
+                  //   child: kraken,
+                  // )
                 ],
               ),
             ),
