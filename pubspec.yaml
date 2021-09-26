@@ -12,7 +12,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.0.0+2
   flutter_inappwebview: ^5.3.2
-  kraken: ">= 0.0.1"
+  fluttertoast: ^8.0.8
+  # kraken: ">= 0.0.1"
 
 dev_dependencies:
   flutter_test:

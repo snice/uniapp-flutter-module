@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:kraken/kraken.dart';
 import '../uniapp/app_bar.dart';
 import '../common/global.dart';
@@ -86,6 +87,19 @@ class _MyHomePageState extends RootPageState<MyHomePage> {
                           arguments: {'id': 1});
                     },
                     child: Text('Next'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Fluttertoast.showToast(
+                          msg: "This is Center Short Toast",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                    },
+                    child: Text('Toast'),
                   ),
                   // Expanded(
                   //   child: kraken,
